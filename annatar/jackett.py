@@ -23,7 +23,6 @@ from annatar.torrent import Category
 
 log = structlog.get_logger(__name__)
 
-
 JACKETT_URL: str = os.environ.get("JACKETT_URL", "http://87.98.218.210:9117")
 JACKETT_API_KEY: str = os.environ.get("JACKETT_API_KEY", "5mprcfoumvjvn1yv9o7lt89yx51jod7z")
 
@@ -35,9 +34,8 @@ JACKETT_CACHE_MINUTES = timedelta(minutes=int(os.environ.get("JACKETT_CACHE_MINU
 
 JACKETT_INDEXERS_LIST: list[str] = os.environ.get(
     "JACKETT_INDEXERS",
-    "bittorrentfiles,fearnopeer,filelist,ncore,onlyencodes-api,pretome,resurrectthenet,scenehd,skipthecommercials-api,solidtorrents,speedapp,torrentdownloads,torrentday,torrentproject2",
+    "Bittorrentfiles,fearnopeer,filelist,ncore,onlyencodes-api,pretome,resurrectthenet,scenehd,skipthecommercials-api,solidtorrents,speedapp,torrentdownloads,torrentday,torrentproject2",
 ).split(",")
-
 
 REQUEST_DURATION = Histogram(
     name="jackett_request_duration_seconds",
@@ -273,6 +271,11 @@ async def execute_search(
                         message="jackett search error",
                         status=response_status,
                     ) from err
+
+        # Convert integer fields TVDBId and TMDb to strings
+        for result in response_json["Results"]:
+            result['TVDBId'] = str(result.get('TVDBId', ''))
+            result['TMDb'] = str(result.get('TMDb', ''))
 
         res: SearchResults = SearchResults(
             Results=[SearchResult(**result) for result in response_json["Results"]]
