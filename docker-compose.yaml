@@ -1,0 +1,30 @@
+---
+version: '3.8'
+volumes:
+  jackett_config: {}
+  redis_data: {}
+
+services:
+  annatar:
+    image: docker.io/mikmc/annatar:latest
+    ports:
+      - "8000:8000"
+    depends_on:
+      - jackett
+    volumes:
+      - "redis_data:/app/data"
+    environment:
+      LOG_LEVEL: debug
+      JACKETT_URL: "http://87.98.218.210:9117"
+      JACKETT_API_KEY: "5mprcfoumvjvn1yv9o7lt89yx51jod7z"
+      JACKETT_MAX_RESULTS: "100" # max results from jackett search
+      JACKETT_TIMEOUT: "60" # max time spent searching per indexer.
+      JACKETT_INDEXERS: "bittorrentfiles,fearnopeer,filelist,ncore,onlyencodes-api,pretome,resurrectthenet,scenehd,skipthecommercials-api,solidtorrents,speedapp,torrentdownloads,torrentday,torrentproject2"
+      LISTEN_PORT: "8000"
+
+  jackett:
+    image: docker.io/linuxserver/jackett
+    ports:
+      - 9117:9117
+    volumes:
+      - jackett_config:/config
