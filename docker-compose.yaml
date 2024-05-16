@@ -15,11 +15,11 @@ services:
       - "redis_data:/app/data"
     environment:
       LOG_LEVEL: debug
-      JACKETT_URL: "http://87.98.218.210:9117"
-      JACKETT_API_KEY: "5mprcfoumvjvn1yv9o7lt89yx51jod7z"
+      JACKETT_URL: "http://209.141.51.175:9117"
+      JACKETT_API_KEY: "cmrenk8hgy1u738worvkmfiuif5fa14c"
       JACKETT_MAX_RESULTS: "100" # max results from jackett search
       JACKETT_TIMEOUT: "60" # max time spent searching per indexer.
-      JACKETT_INDEXERS: "bittorrentfiles,fearnopeer,filelist,ncore,onlyencodes-api,pretome,resurrectthenet,scenehd,skipthecommercials-api,solidtorrents,speedapp,torrentdownloads,torrentday,torrentproject2"
+      JACKETT_INDEXERS: "1337x,badasstorrents,bigfangroup,bitru,bitsearch,btsow,eztv,gktorrent,itorrent,kickasstorrents-to,kickasstorrents-ws,knaben,megapeer,newstudio,nntt,noname-club,seedoff,solidtorrents,thepiratebay,torrentdownloads,torrentproject2,torrentsir,torrentview,torrentwhiz,torrentz2nz,wolfmax4k,yourbittorrent,yts"
       LISTEN_PORT: "8000"
 
   jackett:
