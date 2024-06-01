@@ -34,7 +34,7 @@ JACKETT_CACHE_MINUTES = timedelta(minutes=int(os.environ.get("JACKETT_CACHE_MINU
 
 JACKETT_INDEXERS_LIST: list[str] = os.environ.get(
     "JACKETT_INDEXERS",
-    "1337x,badasstorrents,bigfangroup,bitru,bitsearch,btsow,eztv,gktorrent,itorrent,kickasstorrents-to,kickasstorrents-ws,knaben,megapeer,newstudio,nntt,noname-club,seedoff,solidtorrents,thepiratebay,torrentdownloads,torrentproject2,torrentsir,torrentview,torrentwhiz,torrentz2nz,wolfmax4k,yourbittorrent,yts
+    "badasstorrents,bigfangroup,bitru,bitsearch,btsow,eztv,gktorrent,itorrent,kickasstorrents-to,kickasstorrents-ws,knaben,megapeer,newstudio,nntt,noname-club,seedoff,solidtorrents,thepiratebay,torrentdownloads,torrentproject2,torrentsir,torrentview,torrentwhiz,torrentz2nz,wolfmax4k,yourbittorrent,yts
 ",
 ).split(",")
 
