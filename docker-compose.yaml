@@ -3,10 +3,12 @@ version: '3.8'
 volumes:
   jackett_config: {}
   redis_data: {}
-
+  
 services:
   annatar:
-    image: docker.io/mikmc/annatar:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "8000:8000"
     depends_on:
